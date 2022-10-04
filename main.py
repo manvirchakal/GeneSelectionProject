@@ -5,12 +5,12 @@ WIDTH, HEIGHT = 800, 1000
 WIN = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("Gene Selection")
 
-BLACK = (0,0,0)
+WHITE = (255,255,255)
 
 FPS = 60
 
 def draw_window():
-	WIN.fill(BLACK)
+	WIN.fill(WHITE)
 	pygame.display.update()
 
 def main():
