@@ -12,7 +12,7 @@ class AntAgent():
 	def set_y(self, y_pos):
 		y = y_pos
 
-	def move(self, ant, WIDTH, HEIGHT):
+	def move(self, ant, WIDTH, HEIGHT, STEP):
 		if ant.x <= 0:
 			direction_choices = [1,2,3]
 			vector_x = random.choice(direction_choices)
@@ -44,48 +44,48 @@ class AntAgent():
 		#vector_y = random.randrange(3)
 
 		if vector_x == 0 and vector_y == 1:
-			ant.x += -1
+			ant.x += -STEP
 
 		if vector_x == 0 and vector_y == 0:
-			ant.x += -1
-			ant.y += 1
+			ant.x += -STEP
+			ant.y += STEP
 
 		if vector_x == 0 and vector_y == 2:
-			ant.x += -1
-			ant.y += -1
+			ant.x += -STEP
+			ant.y += -STEP
 
 		if vector_x == 1 and vector_y == 1:
-			ant.y += -1
+			ant.y += -STEP
 
 		if vector_x == 1 and vector_y == 0:
-			ant.x += -1
-			ant.y += -1
+			ant.x += -STEP
+			ant.y += -STEP
 
 		if vector_x == 1 and vector_y == 2:
-			ant.x += 1
-			ant.y += -1
+			ant.x += STEP
+			ant.y += -STEP
 
 		if vector_x == 2 and vector_y == 1:
-			ant.x += 1
+			ant.x += STEP
 
 		if vector_x == 2 and vector_y == 0:
-			ant.x += 1
-			ant.y += -1
+			ant.x += STEP
+			ant.y += -STEP
 
 		if vector_x == 2 and vector_y == 2:
-			ant.x += 1
-			ant.y += 1
+			ant.x += STEP
+			ant.y += STEP
 
 		if vector_x == 3 and vector_y == 1:
-			ant.y += 1
+			ant.y += STEP
 
 		if vector_x == 3 and vector_y == 0:
-			ant.x += 1
-			ant.y += 1
+			ant.x += STEP
+			ant.y += STEP
 
 		if vector_x == 3 and vector_y == 2:
-			ant.x += -1
-			ant.y += 1
+			ant.x += -STEP
+			ant.y += STEP
 
 		self.x = ant.x 
 		self.y = ant.y
