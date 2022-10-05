@@ -1,16 +1,25 @@
 import random
 
 class AntAgent():
-	def __init__(self, x_pos, y_pos):
+	def __init__(self, x_pos, y_pos, max_steps):
 		self.x = x_pos
 		self.y = y_pos
 		self.current_x_vector = random.randrange(4)
+		self.random_change_factor = 0.001
+		self.steps_taken = 0
+		self.max_steps = max_steps
 
 	def set_x(self, x_pos):
 		x = x_pos
 
 	def set_y(self, y_pos):
 		y = y_pos
+
+	def get_steps_taken(self):
+		return self.steps_taken
+
+	def get_max_steps(self):
+		return self.max_steps
 
 	def move(self, ant, WIDTH, HEIGHT, STEP):
 		if ant.x <= 0:
@@ -38,10 +47,12 @@ class AntAgent():
 			vector_y = random.randrange(3)
 
 		else:
-			vector_x = self.current_x_vector
+			if self.random_change_factor*1000 > random.choice(range(1000)):
+				vector_x = random.randrange(4)
+			else:
+				vector_x = self.current_x_vector
+
 			vector_y = random.randrange(3)
-		
-		#vector_y = random.randrange(3)
 
 		if vector_x == 0 and vector_y == 1:
 			ant.x += -STEP
@@ -90,3 +101,4 @@ class AntAgent():
 		self.x = ant.x 
 		self.y = ant.y
 		self.current_x_vector = vector_x
+		self.steps_taken += 1

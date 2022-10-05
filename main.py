@@ -11,9 +11,11 @@ WHITE = (255,255,255)
 
 STEP = 1
 
+MAX_STEPS = range(700,1000)
+
 FPS = 60
 
-NUMBER_ANTS = 60*2
+NUMBER_ANTS = 15
 
 ANT_IMAGE = pygame.image.load(os.path.join('Assets','ant.png'))
 ANT = pygame.transform.rotate(pygame.transform.scale(ANT_IMAGE, (40,40)), 320)
@@ -31,7 +33,7 @@ def main():
 
 	for i in range(NUMBER_ANTS):		
 		ant = pygame.Rect(random.choice(range(1000)), random.choice(range(1000)), 40, 40)
-		agent = AntAgent(ant.x, ant.y)
+		agent = AntAgent(ant.x, ant.y, random.choice(MAX_STEPS))
 		ant_agent_pair = (ant, agent)
 		ants.append(ant_agent_pair)
 
@@ -46,7 +48,14 @@ def main():
 		for ant_agent_pair in ants:
 			ant = ant_agent_pair[0]
 			agent = ant_agent_pair[1]
+			print(agent.get_steps_taken())
 			agent.move(ant, WIDTH, HEIGHT, STEP)
+
+			if agent.get_steps_taken() >= agent.get_max_steps():
+				ants.remove(ant_agent_pair)
+
+		if len(ants) == 0:
+			run = False
 
 		draw_window(ants)
 
