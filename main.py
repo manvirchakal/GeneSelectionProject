@@ -10,6 +10,8 @@ WHITE = (255,255,255)
 
 FPS = 60
 
+NUMBER_ANTS = 60
+
 ANT_IMAGE = pygame.image.load(os.path.join('Assets','ant.png'))
 ANT = pygame.transform.rotate(pygame.transform.scale(ANT_IMAGE, (40,40)), 320)
 
@@ -19,7 +21,7 @@ def draw_window(ant):
 	pygame.display.update()
 
 def main():
-	ant = pygame.Rect(100, 300, 40, 40)
+	ant = pygame.Rect(0, 0, 40, 40)
 	agent = AntAgent(100, 300)
 
 	clock = pygame.time.Clock()

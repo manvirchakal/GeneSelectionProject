@@ -14,25 +14,27 @@ class AntAgent():
 
 	def move(self, ant, WIDTH, HEIGHT):
 		if ant.x <= 0:
-			vector_x = random.randint(1,3)
+			direction_choices = [1,2,3]
+			vector_x = random.choice(direction_choices)
+			self.current_x_vector = vector_x
 			vector_y = random.randrange(3)
 
 		if ant.y <= 0:
 			direction_choices = [0,2,3]
-			index_choice = randrange(3)
-			vector_x = direction_choices[index_choice]
+			vector_x = random.choice(direction_choices)
+			self.current_x_vector = vector_x
 			vector_y = random.randrange(3)
 
-		if ant.x >= WIDTH:
+		if ant.x >= WIDTH - 40:
 			direction_choices = [0,1,3]
-			index_choice = randrange(3)
-			vector_x = direction_choices[index_choice]
+			vector_x = random.choice(direction_choices)
+			self.current_x_vector = vector_x
 			vector_y = random.randrange(3)
 
-		if ant.y >= HEIGHT:
+		if ant.y >= HEIGHT - 40:
 			direction_choices = [0,1,2]
-			index_choice = randrange(3)
-			vector_x = direction_choices[index_choice]
+			vector_x = random.choice(direction_choices)
+			self.current_x_vector = vector_x
 			vector_y = random.randrange(3)
 
 		else:
@@ -41,51 +43,50 @@ class AntAgent():
 		
 		#vector_y = random.randrange(3)
 
-		if vector_x == 0 and vector_y == 0:
+		if vector_x == 0 and vector_y == 1:
 			ant.x += -1
 
-		if vector_x == 0 and vector_y == -1:
+		if vector_x == 0 and vector_y == 0:
 			ant.x += -1
 			ant.y += 1
 
-		if vector_x == 0 and vector_y == 1:
-			ant.x += -1
-			ant.y += -1
-
-		if vector_x == 1 and vector_y == 0:
-			ant.y += -1
-
-		if vector_x == 1 and vector_y == -1:
+		if vector_x == 0 and vector_y == 2:
 			ant.x += -1
 			ant.y += -1
 
 		if vector_x == 1 and vector_y == 1:
-			ant.x += 1
 			ant.y += -1
 
-		if vector_x == 2 and vector_y == 0:
-			ant.x += 1
+		if vector_x == 1 and vector_y == 0:
+			ant.x += -1
+			ant.y += -1
 
-		if vector_x == 2 and vector_y == -1:
+		if vector_x == 1 and vector_y == 2:
 			ant.x += 1
 			ant.y += -1
 
 		if vector_x == 2 and vector_y == 1:
 			ant.x += 1
-			ant.y += 1
 
-		if vector_x == 3 and vector_y == 0:
-			ant.y += 1
+		if vector_x == 2 and vector_y == 0:
+			ant.x += 1
+			ant.y += -1
 
-		if vector_x == 3 and vector_y == -1:
+		if vector_x == 2 and vector_y == 2:
 			ant.x += 1
 			ant.y += 1
 
 		if vector_x == 3 and vector_y == 1:
+			ant.y += 1
+
+		if vector_x == 3 and vector_y == 0:
+			ant.x += 1
+			ant.y += 1
+
+		if vector_x == 3 and vector_y == 2:
 			ant.x += -1
 			ant.y += 1
 
 		self.x = ant.x 
 		self.y = ant.y
 		self.current_x_vector = vector_x
-		print(vector_x,' ',vector_y,'\t\t',ant.x,ant.y)
