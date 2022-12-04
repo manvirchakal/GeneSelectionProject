@@ -5,7 +5,7 @@ class AntAgent():
 		self.x = x_pos
 		self.y = y_pos
 		self.current_x_vector = random.randrange(4)
-		self.random_change_factor = 0.001
+		self.random_change_factor = 0.01
 		self.steps_taken = 0
 		self.max_steps = max_steps
 
@@ -47,7 +47,7 @@ class AntAgent():
 			vector_y = random.randrange(3)
 
 		else:
-			if self.random_change_factor*1000 > random.choice(range(1000)):
+			if self.random_change_factor*100 > random.choice(range(100)):
 				vector_x = random.randrange(4)
 			else:
 				vector_x = self.current_x_vector
@@ -101,4 +101,4 @@ class AntAgent():
 		self.x = ant.x 
 		self.y = ant.y
 		self.current_x_vector = vector_x
-		self.steps_taken += 1
+		self.steps_taken += STEP

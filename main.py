@@ -11,7 +11,7 @@ WHITE = (255,255,255)
 
 STEP = 1
 
-MAX_STEPS = range(700,1000)
+MAX_STEPS = range(7000,10000)
 
 FPS = 60
 
@@ -48,11 +48,12 @@ def main():
 		for ant_agent_pair in ants:
 			ant = ant_agent_pair[0]
 			agent = ant_agent_pair[1]
-			print(agent.get_steps_taken())
 			agent.move(ant, WIDTH, HEIGHT, STEP)
 
 			if agent.get_steps_taken() >= agent.get_max_steps():
 				ants.remove(ant_agent_pair)
+
+		print(agent.get_steps_taken())
 
 		if len(ants) == 0:
 			run = False
