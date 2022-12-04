@@ -102,3 +102,6 @@ class AntAgent():
 		self.y = ant.y
 		self.current_x_vector = vector_x
 		self.steps_taken += STEP
+
+	def replenish(self, replenish_value):
+		self.max_steps += replenish_value
