@@ -89,7 +89,7 @@ def main():
 				ant = ant_agent_pair[0]
 				agent = ant_agent_pair[1]
 
-				if agent.x in range(leaf.x - 5, leaf.x + 5) and agent.y in range(leaf.y - 5, leaf.y + 5):
+				if agent.x + 5 in range(leaf.x - 5, leaf.x + 5) and agent.y + 5 in range(leaf.y - 5, leaf.y + 5):
 					leaf.acquire(agent)
 					leaves.remove(leaf_particle_pair)
 					print("Success")
